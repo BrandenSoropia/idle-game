@@ -12,5 +12,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "nightwatch": "^0.9.16",
+    "selenium-download": "^2.0.10"
   }
 }
