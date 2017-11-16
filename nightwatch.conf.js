@@ -5,7 +5,7 @@ const BINPATH = './node_modules/nightwatch/bin/';
 // we use a nightwatch.conf.js file so we can include comments and helper functions
 module.exports = {
     "src_folders": [
-        "./src/tests"// Where you are storing your Nightwatch e2e tests
+        "./src/nightwatch"// Where you are storing your Nightwatch e2e nightwatch
     ],
     "output_folder": "./reports", // reports (test outcome) output by nightwatch
     "selenium": { // downloaded by selenium-download module (see readme)
@@ -26,7 +26,7 @@ module.exports = {
             "globals": {
                 "waitForConditionTimeout": 5000 // sometimes internet is slow so wait.
             },
-            "desiredCapabilities": { // use Chrome as the default browser for tests
+            "desiredCapabilities": { // use Chrome as the default browser for nightwatch
                 "browserName": "chrome"
             }
         },
@@ -42,7 +42,7 @@ module.exports = {
  * selenium-download does exactly what it's name suggests;
  * downloads (or updates) the version of Selenium (& chromedriver)
  * on your localhost where it will be used by Nightwatch.
- /the following code checks for the existence of `selenium.jar` before trying to run our tests.
+ /the following code checks for the existence of `selenium.jar` before trying to run our nightwatch.
  */
 
 require('fs').stat(BINPATH + 'selenium.jar', function (err, stat) { // got it?

@@ -4,7 +4,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            clicks: 0
+            score: 0
         };
     }
 
@@ -18,17 +18,17 @@ class Main extends Component {
     /**
      * Clear increment once component unmounts.
      */
-    componentDidUnmount() {
+    componentWillUnmount() {
         clearInterval(this.interval);
     }
 
     incrementPerSecond = () => {
-        this.interval = setInterval(() => this.incrementClicks(1), 1000);
+        this.interval = setInterval(() => this.incrementScore(1), 1000);
     };
 
-    incrementClicks = (amount) => {
+    incrementScore = (amount) => {
         this.setState({
-            clicks: this.state.clicks + amount
+            score: this.state.score + amount
         })
     };
 
@@ -37,14 +37,18 @@ class Main extends Component {
      */
     handleClick = () => {
         this.setState(prevState => ({
-            clicks: prevState.clicks + 1
+            score: prevState.score + 1
         }));
     };
 
     render() {
         return (
             <div>
-                <span>Clicks: {this.state.clicks}</span>
+
+                <div>
+                    Count:&nbsp;
+                    <span className={'score'}>{this.state.score}</span>
+                </div>
                 <button className={'increment-button'} onClick={this.handleClick}>Click Me</button>
             </div>
         )
