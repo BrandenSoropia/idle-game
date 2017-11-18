@@ -1,13 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            score: 0
-        };
-    }
-
     /**
      * Start incrementing once component mounts.
      */
@@ -23,22 +16,14 @@ class Main extends Component {
     }
 
     incrementPerSecond = () => {
-        this.interval = setInterval(() => this.incrementScore(1), 1000);
-    };
-
-    incrementScore = (amount) => {
-        this.setState({
-            score: this.state.score + amount
-        })
+        this.interval = setInterval(() => this.props.incrementScore(this.props.scoreMultiplier), 1000);
     };
 
     /**
      * Asynchronously add 1 whenever button is clicked
      */
     handleClick = () => {
-        this.setState(prevState => ({
-            score: prevState.score + 1
-        }));
+        this.props.incrementScore(this.props.scoreMultiplier);
     };
 
     render() {
@@ -47,7 +32,7 @@ class Main extends Component {
 
                 <div>
                     Count:&nbsp;
-                    <span className={'score'}>{this.state.score}</span>
+                    <span className={'score'}>{this.props.score}</span>
                 </div>
                 <button className={'increment-button'} onClick={this.handleClick}>Click Me</button>
             </div>
