@@ -10,7 +10,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --testPathPattern ./src/components\/.* --env=jsdom --setupTestFrameworkScriptFile ./setup.jest.js",
+    "test": "react-scripts test --testPathPattern --env=jsdom --setupTestFrameworkScriptFile ./setup.jest.js ./src/components/.* ",
     "test-nightwatch": "nightwatch ./src/nightwatch",
     "eject": "react-scripts eject"
   },

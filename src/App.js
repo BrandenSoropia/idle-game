@@ -10,7 +10,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scoreMultiplier: 1,
+            scoreIncrementAmount: 1,
             score: 0
         }
     }
@@ -21,8 +21,14 @@ class App extends Component {
         })
     };
 
+    setScoreIncrement = (newAmount) => {
+        this.setState({
+            scoreIncrementAmount: newAmount
+        })
+    };
+
     render() {
-        const {score, scoreMultiplier} = this.state;
+        const {score, scoreIncrementAmount} = this.state;
 
         return (
             <div className="App">
@@ -30,8 +36,8 @@ class App extends Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
-                <Main score={score} scoreMultiplier={scoreMultiplier} incrementScore={this.incrementScore}/>
-                <Marketplace/>
+                <Main score={score} scoreIncrementAmount={scoreIncrementAmount} incrementScore={this.incrementScore}/>
+                <Marketplace setScoreIncrement={this.setScoreIncrement}/>
             </div>
         );
     }

@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 
 class Marketplace extends Component {
-    constructor(props) {
-        super(props);
-
-    }
+    /**
+     * Asynchronously set the increment amount.
+     */
+    setNewScoreIncrement = (newAmount) => {
+      this.props.setScoreIncrement(newAmount);
+    };
 
     render() {
         return (
             <div className={'marketplace'}>
                 <span classname={'item'}>
-                    <button className={'buy-button'} onClick={() => {}}>Buy</button>
+                    Increment by 2!
+                    <button className={'buy-button'} onClick={() => this.setNewScoreIncrement(2)}>Buy</button>
                 </span>
             </div>
         )
