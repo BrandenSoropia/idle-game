@@ -16,14 +16,14 @@ class Main extends Component {
     }
 
     incrementPerSecond = () => {
-        this.interval = setInterval(() => this.props.incrementScore(this.props.scoreIncrementAmount), 1000);
+        this.interval = setInterval(() => this.props.incrementScore(this.props.perSecondScoreIncrement), 1000);
     };
 
     /**
      * Asynchronously add 1 whenever button is clicked.
      */
     handleClick = () => {
-        this.props.incrementScore(this.props.scoreIncrementAmount);
+        this.props.incrementScore(this.props.perSecondScoreIncrement);
     };
 
     render() {
