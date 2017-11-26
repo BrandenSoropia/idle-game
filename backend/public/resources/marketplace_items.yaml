@@ -1,0 +1,11 @@
+marketplace_items:
+  item1:
+    base_cost: 5
+    per_second_score_amplifier: 2
+  item2:
+    base_cost: 25
+    per_second_score_amplifier: 10
+  item3:
+    base_cost: 125
+    per_second_score_amplifier: 50
+
