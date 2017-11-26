@@ -5,7 +5,7 @@ class Marketplace extends Component {
      * Asynchronously set the increment amount.
      */
     buyItem = (itemCost, itemName, itemPerSecondIncrease) => {
-        // TODO: Check if there is enough in score. Subtract, increase amount owned and apply score increase iff true. Otherwise reject
+        // Check if there is enough in score. Subtract, increase amount owned and apply score increase iff true. Otherwise reject
         if (!this.hasEnoughToPurchase(itemCost)) {// Do nothing if can't afford purchase
             console.log(`Sorry you can't afford purchasing ${itemName}!`);
             return;
