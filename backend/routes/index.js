@@ -9,6 +9,9 @@ router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 
+/**
+ * Return a
+ */
 router.get('/get_marketplace_items', function (req, res, next) {
     // Get document, or throw exception on error
     try {

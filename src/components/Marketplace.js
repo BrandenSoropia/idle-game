@@ -9,6 +9,7 @@ class Marketplace extends Component {
             items: []
         }
     }
+
     /**
      * Populate marketplace with data received from backend.
      */

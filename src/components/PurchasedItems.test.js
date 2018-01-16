@@ -1,5 +1,5 @@
 import React from 'react';
-import PurchasedItems from './PurchasedItems';
+import PurchasedItems from './Inventory';
 import { shallow } from 'enzyme';
 
 describe('PurchasedItems test', () => {

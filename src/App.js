@@ -5,17 +5,16 @@ import './App.css';
 // Components
 import Main from './components/Main';
 import Marketplace from './components/Marketplace';
-import PurchasedItems from "./components/PurchasedItems";
+import Inventory from "./components/Inventory";
 
 class App extends Component {
     constructor(props) {
         super(props);
+        // Game state
         this.state = {
             perSecondScoreIncrement: 1,
             score: 0,
-            purchasedItems: {
-                item: 0
-            }
+            inventory: {}
         }
     }
 
@@ -37,24 +36,33 @@ class App extends Component {
         })
     };
 
+    setInventory = (inventory) => {
+        this.setState(() => {
+            return { inventory }
+        })
+    };
+
     /**
      * Add or remove amount of items with itemName.
      * @param itemName
-     * @param amount, an positive or negative int
+     * @param amount, an positive or negative int. If negative, it reduces the amount of that item!
      */
     updateItemAmount = (itemName, amount) => {
         this.setState((prevState) => {
-            const result = { purchasedItems: {
-                item: prevState.purchasedItems[itemName] + amount
-                }
-            };
-            console.log(result)
+            // Handle case where item has never been bought yet
+            let currentAmount = prevState.inventory.hasOwnProperty(itemName)
+                ? prevState.inventory[itemName]
+                : 0;
+
+            // Update inventory of that item
+            const result = prevState.inventory[itemName] = currentAmount + amount;
+
             return result;
         })
     };
 
     render() {
-        const {score, perSecondScoreIncrement, purchasedItems} = this.state;
+        const {score, perSecondScoreIncrement, inventory} = this.state;
 
         return (
             <div className="App">
@@ -62,7 +70,7 @@ class App extends Component {
                     <img src={logo} className="App-logo" alt="logo"/>
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
-                <PurchasedItems purchasedItems={purchasedItems}/>
+                <Inventory inventory={inventory} setInventory={this.setInventory}/>
                 <Main
                     score={score}
                     perSecondScoreIncrement={perSecondScoreIncrement}
