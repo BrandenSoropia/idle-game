@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import 'whatwg-fetch';
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 class Inventory extends Component {
     componentDidMount() {

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import 'whatwg-fetch';
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 class Marketplace extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            items: []
+            items: {}
         }
     }
 
@@ -78,19 +79,23 @@ class Marketplace extends Component {
     render() {
         const { items } = this.state;
 
-        const marketplaceItemElements = Object.keys(items).map((itemName, idx) => {
-            const { base_cost , per_second_score_amplifier } = items[itemName];
+        let marketplaceItemElements;
 
-            return (
-                <span className={'item'} key={`item-${idx}`}>
-                    {
-                        // TODO: apply modifier to cost
-                        `Increase increment by ${per_second_score_amplifier}!`
-                    }
-                    <button className={'buy-button'} key={`buy-button-${idx}`} onClick={() => this.buyItem(base_cost, itemName, per_second_score_amplifier)}>Buy</button>
-                </span>
-            )
-        });
+        if (items) { // Only populate marketplace if items are not null
+            marketplaceItemElements = Object.keys(items).map((itemName, idx) => {
+                const { base_cost, per_second_score_amplifier } = items[itemName];
+
+                return (
+                    <span className={'item'} key={`item-${idx}`}>
+                        {
+                            // TODO: apply modifier to cost
+                            `Increase increment by ${per_second_score_amplifier}!`
+                        }
+                        <button className={'buy-button'} key={`buy-button-${idx}`} onClick={() => this.buyItem(base_cost, itemName, per_second_score_amplifier)}>Buy</button>
+                    </span>
+                )
+            });
+        }
 
         return (
             <div className={'marketplace'}>

@@ -1,7 +1,11 @@
 import React from 'react';
 import App from '../App';
 import Main from './Main';
-import {shallow} from 'enzyme';
+import {shallow, configure} from 'enzyme';
+
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 describe('Main test', () => {
     test('Test initial score is 0', () => {
